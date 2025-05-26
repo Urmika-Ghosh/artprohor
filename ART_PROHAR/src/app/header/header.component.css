@@ -1,11 +1,12 @@
 /* Top banner styles */
 .top-banner {
-  background-color: #BB9457;
+  background-color: #E5C7BD;
   color: white;
   text-align: center;
   padding: 6px 0;
   font-weight: 500;
   font-size: 14px;
+  color: #bf4342;
 }
 
 /* Main header styles */
@@ -13,17 +14,42 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #99582A;
+  background-color: #a4c3b2;
   padding: 10px 20px;
   color: white;
 }
 
 /* Logo */
-.logo {
+/* .logo {
   font-weight: bold;
   letter-spacing: 4px;
   font-size: 20px;
+} */
+
+.brand-logo {
+  font-size: 2.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
 }
+
+.art {
+  font-family: 'Cinzel Decorative', serif;
+  color: white; /* gold */
+  font-size: 2.5rem;
+  margin-right: 5px;
+  text-shadow: 2px 2px 4px rgba(216, 57, 57, 0.803); /* subtle shadow */
+}
+
+.prohor {
+  font-family: 'Noto Serif Bengali', serif;
+  color: #c20909; /* rose gold */
+  font-size: 2.2rem;
+  text-shadow: 2px 2px 4px rgb(249, 247, 247); /* subtle shadow */
+}
+
+
 
 /* Navigation menu */
 .nav-links {
@@ -35,7 +61,7 @@
 
 .nav-links a,
 .nav-links .dropdown {
-  color: white;
+  color: #000814;
   text-decoration: none;
   cursor: pointer;
   position: relative;
@@ -55,4 +81,9 @@
 .icon {
   font-size: 18px;
   cursor: pointer;
+}
+
+.dropdown1{
+color: #c20909; /* rose gold */
+text-shadow: 2px 2px 4px rgb(249, 247, 247); /* subtle shadow */
 }
