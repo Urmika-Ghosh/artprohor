@@ -1,0 +1,58 @@
+/* Top banner styles */
+.top-banner {
+  background-color: #BB9457;
+  color: white;
+  text-align: center;
+  padding: 6px 0;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Main header styles */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #99582A;
+  padding: 10px 20px;
+  color: white;
+}
+
+/* Logo */
+.logo {
+  font-weight: bold;
+  letter-spacing: 4px;
+  font-size: 20px;
+}
+
+/* Navigation menu */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 16px;
+}
+
+.nav-links a,
+.nav-links .dropdown {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-links a.active {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Icons section */
+.icons {
+  display: flex;
+  gap: 20px;
+}
+
+.icon {
+  font-size: 18px;
+  cursor: pointer;
+}
