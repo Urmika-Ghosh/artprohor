@@ -1,5 +1,21 @@
 .carousel-item img {
   height: 450px;
+  width: 100%;
   object-fit: cover;
   border-radius: 15px;
 }
+
+
+.carousel-item {
+  display: block !important;
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+
