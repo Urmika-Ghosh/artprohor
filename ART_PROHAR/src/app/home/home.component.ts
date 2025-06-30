@@ -1,12 +1,20 @@
-import { Component, AfterViewInit, ElementRef,ViewChild,  } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  ElementRef,
+  ViewChild,
+  PLATFORM_ID,
+  Inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements AfterViewInit {
   gifts = [
@@ -19,32 +27,60 @@ export class HomeComponent implements AfterViewInit {
     'Gift Category 7',
     'Gift Category 8',
     'Gift Category 9',
-    'Gift Category 10'
+    'Gift Category 10',
   ];
 
-    @ViewChild('carousel') carousel!: ElementRef<HTMLDivElement>;
+  @ViewChild('carousel') carousel!: ElementRef<HTMLDivElement>;
 
-ngAfterViewInit() {
-    let startX = 0;
-    const carouselEl = this.carousel.nativeElement;
+  
+  autoScrollDirection: 'right' | 'left' = 'right'; // ✅ Direction flag
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
-    carouselEl.addEventListener('touchstart', (e: TouchEvent) => {
-      startX = e.touches[0].clientX;
-    });
+  ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      let startX = 0;
+      const carouselEl = this.carousel.nativeElement;
 
-    carouselEl.addEventListener('touchend', (e: TouchEvent) => {
-      const endX = e.changedTouches[0].clientX;
-      const diff = startX - endX;
+      carouselEl.addEventListener('touchstart', (e: TouchEvent) => {
+        startX = e.touches[0].clientX;
+      });
 
-      if (diff > 50) {
-        this.scrollGifts('right');
-      } else if (diff < -50) {
-        this.scrollGifts('left');
-      }
-    });
+      carouselEl.addEventListener('touchend', (e: TouchEvent) => {
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+
+        if (diff > 50) {
+          this.scrollGifts('right');
+        } else if (diff < -50) {
+          this.scrollGifts('left');
+        }
+      });
+
+      // ✅ Auto-scroll only in browser
+    setInterval(() => {
+        this.scrollGifts(this.autoScrollDirection);
+
+        // Check if we have reached near end or start, and switch direction
+        const maxScrollLeft = carouselEl.scrollWidth - carouselEl.clientWidth;
+        const currentScroll = carouselEl.scrollLeft;
+
+        if (currentScroll >= maxScrollLeft - 10) {
+          this.autoScrollDirection = 'left';
+        } else if (currentScroll <= 10) {
+          this.autoScrollDirection = 'right';
+        }
+      }, 2000);
+    }
   }
 
   scrollGifts(direction: 'left' | 'right') {
-    console.log(direction);
+    const carouselEl = this.carousel.nativeElement;
+    const scrollAmount = 220;
+
+    if (direction === 'left') {
+      carouselEl.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else if (direction === 'right') {
+      carouselEl.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
   }
 }
