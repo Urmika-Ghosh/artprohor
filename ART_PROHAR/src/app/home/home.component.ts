@@ -5,6 +5,7 @@ import {
   ViewChild,
   PLATFORM_ID,
   Inject,
+  OnDestroy
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
@@ -16,7 +17,7 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements AfterViewInit, OnDestroy {
   gifts = [
     'Gift Category 1',
     'Gift Category 2',
@@ -31,9 +32,13 @@ export class HomeComponent implements AfterViewInit {
   ];
 
   @ViewChild('carousel') carousel!: ElementRef<HTMLDivElement>;
+  @ViewChild('familyCarousel', { static: false }) familyCarousel!: ElementRef;
 
-  
-  autoScrollDirection: 'right' | 'left' = 'right'; // ✅ Direction flag
+  private autoScrollInterval: any;
+  private familyAutoScrollInterval: any;
+
+  autoScrollDirection: 'right' | 'left' = 'right';
+
   constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
   ngAfterViewInit() {
@@ -56,11 +61,10 @@ export class HomeComponent implements AfterViewInit {
         }
       });
 
-      // ✅ Auto-scroll only in browser
-    setInterval(() => {
+      // Gift Categories: auto-scroll with reverse
+      setInterval(() => {
         this.scrollGifts(this.autoScrollDirection);
 
-        // Check if we have reached near end or start, and switch direction
         const maxScrollLeft = carouselEl.scrollWidth - carouselEl.clientWidth;
         const currentScroll = carouselEl.scrollLeft;
 
@@ -70,6 +74,18 @@ export class HomeComponent implements AfterViewInit {
           this.autoScrollDirection = 'right';
         }
       }, 2000);
+
+      // ARtপ্রহর Family auto-scroll loop
+      this.startFamilyAutoScroll();
+
+      // Pause/resume on hover
+      const familyEl = this.familyCarousel.nativeElement;
+      familyEl.addEventListener('mouseenter', () => {
+        clearInterval(this.familyAutoScrollInterval);
+      });
+      familyEl.addEventListener('mouseleave', () => {
+        this.startFamilyAutoScroll();
+      });
     }
   }
 
@@ -82,5 +98,51 @@ export class HomeComponent implements AfterViewInit {
     } else if (direction === 'right') {
       carouselEl.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
+  }
+
+  customers = [
+    { name: 'Customer 1' },
+    { name: 'Customer 2' },
+    { name: 'Customer 3' },
+    { name: 'Customer 4' },
+    { name: 'Customer 5' },
+    { name: 'Customer 6' },
+    { name: 'Customer 7' },
+    { name: 'Customer 8' },
+    { name: 'Customer 9' },
+    { name: 'Customer 10' },
+    { name: 'Customer 11' },
+    { name: 'Customer 12' },
+  ];
+
+  scrollFamily(direction: 'left' | 'right') {
+    const carousel = this.familyCarousel?.nativeElement;
+    if (carousel) {
+      const scrollAmount = 350;
+      if (direction === 'left') {
+        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  }
+
+  startFamilyAutoScroll() {
+    const carousel = this.familyCarousel?.nativeElement;
+    if (!carousel) return;
+
+    this.familyAutoScrollInterval = setInterval(() => {
+      carousel.scrollBy({ left: 1, behavior: 'smooth' });
+
+      // If at end, jump back to start
+      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 1) {
+        carousel.scrollTo({ left: 0, behavior: 'auto' });
+      }
+    }, 20);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.autoScrollInterval);
+    clearInterval(this.familyAutoScrollInterval);
   }
 }

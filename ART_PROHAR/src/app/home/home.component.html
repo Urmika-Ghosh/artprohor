@@ -163,3 +163,21 @@
     <button class="gift-nav right" (click)="scrollGifts('right')">&#10095;</button>
   </div>
 </section>
+<!--  artprohor family section-->
+<section class="artprohor-family">
+  <h2>ARtপ্রহর Family</h2>
+
+  <div class="carousel-wrapper">
+    <div class="family-carousel" #familyCarousel>
+      <div class="family-item" *ngFor="let customer of customers">
+        <img src="assets/img4.jpg" [alt]="customer.name" />
+        <p>{{ customer.name }}</p>
+      </div>
+    </div>
+
+    <!-- <button class="carousel-btn left" (click)="scrollFamily('left')">&#10094;</button>
+    <button class="carousel-btn right" (click)="scrollFamily('right')">&#10095;</button> -->
+  </div>
+</section>
+
+
