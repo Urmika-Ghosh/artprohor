@@ -5,7 +5,7 @@ import {
   ViewChild,
   PLATFORM_ID,
   Inject,
-  OnDestroy
+  OnDestroy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
@@ -46,6 +46,16 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       let startX = 0;
       const carouselEl = this.carousel.nativeElement;
 
+      // Get one item to calculate width and gap
+      const firstItem = carouselEl.querySelector(
+        '.handmade-item'
+      ) as HTMLElement;
+      if (!firstItem) return;
+
+      const itemWidth = firstItem.offsetWidth;
+      const gap = 30; // your CSS gap (update if you change)
+
+      // Touch swipe
       carouselEl.addEventListener('touchstart', (e: TouchEvent) => {
         startX = e.touches[0].clientX;
       });
@@ -57,28 +67,27 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
         if (diff > 50) {
           this.scrollGifts('right');
         } else if (diff < -50) {
-          this.scrollGifts('left');
+          // Disable left scroll if you don't want left movement manually
+          // this.scrollGifts('left');
         }
       });
 
-      // Gift Categories: auto-scroll with reverse
-      setInterval(() => {
-        this.scrollGifts(this.autoScrollDirection);
-
+      // Auto-scroll one by one, always to the right
+      this.autoScrollInterval = setInterval(() => {
         const maxScrollLeft = carouselEl.scrollWidth - carouselEl.clientWidth;
-        const currentScroll = carouselEl.scrollLeft;
 
-        if (currentScroll >= maxScrollLeft - 10) {
-          this.autoScrollDirection = 'left';
-        } else if (currentScroll <= 10) {
-          this.autoScrollDirection = 'right';
+        if (carouselEl.scrollLeft >= maxScrollLeft - 5) {
+          // Instantly jump back to start
+          carouselEl.scrollTo({ left: 0, behavior: 'auto' });
+        } else {
+          // Scroll one item to the right
+          carouselEl.scrollBy({ left: itemWidth + gap, behavior: 'smooth' });
         }
       }, 2000);
 
-      // ARtপ্রহর Family auto-scroll loop
+      // --- Family carousel logic (if you have) ---
       this.startFamilyAutoScroll();
 
-      // Pause/resume on hover
       const familyEl = this.familyCarousel.nativeElement;
       familyEl.addEventListener('mouseenter', () => {
         clearInterval(this.familyAutoScrollInterval);
@@ -135,7 +144,10 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       carousel.scrollBy({ left: 1, behavior: 'smooth' });
 
       // If at end, jump back to start
-      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 1) {
+      if (
+        carousel.scrollLeft + carousel.clientWidth >=
+        carousel.scrollWidth - 1
+      ) {
         carousel.scrollTo({ left: 0, behavior: 'auto' });
       }
     }, 20);
