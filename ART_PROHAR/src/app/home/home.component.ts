@@ -6,6 +6,7 @@ import {
   PLATFORM_ID,
   Inject,
   OnDestroy,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
@@ -17,7 +18,8 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements AfterViewInit, OnDestroy {
+export class HomeComponent implements AfterViewInit, OnDestroy,OnInit {
+  
   gifts = [
     'Gift Category 1',
     'Gift Category 2',
@@ -31,15 +33,76 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     'Gift Category 10',
   ];
 
+  activeIndex = 2;
+  
+
+  ngOnInit() {
+    // Auto-scroll
+    if (isPlatformBrowser(this.platformId)) {
+    this.centerAutoScrollInterval = setInterval(() => {
+      this.next();
+    }, 3000);
+  }
+  }
+
+  next() {
+  this.activeIndex = (this.activeIndex + 1) % this.gifts.length;
+}
+
+prev() {
+  this.activeIndex = (this.activeIndex - 1 + this.gifts.length) % this.gifts.length;
+}
+
+goToIndex(index: number) {
+  this.activeIndex = index;
+}
+
+getLeftIndex() {
+  return (this.activeIndex - 1 + this.gifts.length) % this.gifts.length;
+}
+
+getRightIndex() {
+  return (this.activeIndex + 1) % this.gifts.length;
+}
+
+getFarLeftIndex() {
+  return (this.activeIndex - 2 + this.gifts.length) % this.gifts.length;
+}
+
+getFarRightIndex() {
+  return (this.activeIndex + 2) % this.gifts.length;
+}
+
+
+ 
+
+  getDisplayIndexes() {
+    const total = this.gifts.length;
+    const result = [];
+    for (let offset = -2; offset <= 2; offset++) {
+      let idx = (this.activeIndex + offset + total) % total;
+      result.push(idx);
+    }
+    return result;
+  }
+
+
+
+
+
+
+
   @ViewChild('carousel') carousel!: ElementRef<HTMLDivElement>;
   @ViewChild('familyCarousel', { static: false }) familyCarousel!: ElementRef;
 
   private autoScrollInterval: any;
   private familyAutoScrollInterval: any;
+   private centerAutoScrollInterval: any; 
 
   autoScrollDirection: 'right' | 'left' = 'right';
 
   constructor(@Inject(PLATFORM_ID) private platformId: any) {}
+  
 
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {

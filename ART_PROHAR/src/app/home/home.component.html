@@ -1,32 +1,47 @@
 <!-- Carousel -->
 
-  <!-- <div class="container mt-4"> -->
-    <div id="homeCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2000">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="assets/img1.jpg" class="d-block w-100" alt="Slide 1" />
-        </div>
-        <div class="carousel-item">
-          <img src="assets/img2.jpg" class="d-block w-100" alt="Slide 2" />
-        </div>
-        <div class="carousel-item">
-          <img src="assets/img3.jpg" class="d-block w-100" alt="Slide 3" />
-        </div>
-        <div class="carousel-item">
-          <img src="assets/img4.jpg" class="d-block w-100" alt="Slide 4" />
-        </div>
-        <div class="carousel-item">
-          <img src="assets/img5.jpg" class="d-block w-100" alt="Slide 5" />
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
+<!-- <div class="container mt-4"> -->
+<div
+  id="homeCarousel"
+  class="carousel slide carousel-fade"
+  data-bs-ride="carousel"
+  data-bs-interval="2000"
+>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="assets/img1.jpg" class="d-block w-100" alt="Slide 1" />
     </div>
-  <!-- </div> -->
+    <div class="carousel-item">
+      <img src="assets/img2.jpg" class="d-block w-100" alt="Slide 2" />
+    </div>
+    <div class="carousel-item">
+      <img src="assets/img3.jpg" class="d-block w-100" alt="Slide 3" />
+    </div>
+    <div class="carousel-item">
+      <img src="assets/img4.jpg" class="d-block w-100" alt="Slide 4" />
+    </div>
+    <div class="carousel-item">
+      <img src="assets/img5.jpg" class="d-block w-100" alt="Slide 5" />
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#homeCarousel"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#homeCarousel"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+<!-- </div> -->
 
 <!-- Shop By Categories -->
 
@@ -151,7 +166,9 @@
   <h2>Handmade Gift Items</h2>
 
   <div class="handmade-carousel-wrapper">
-    <button class="gift-nav left" (click)="scrollGifts('left')">&#10094;</button>
+    <button class="gift-nav left" (click)="scrollGifts('left')">
+      &#10094;
+    </button>
 
     <div class="handmade-items" #carousel>
       <div class="handmade-item" *ngFor="let gift of gifts">
@@ -160,7 +177,9 @@
       </div>
     </div>
 
-    <button class="gift-nav right" (click)="scrollGifts('right')">&#10095;</button>
+    <button class="gift-nav right" (click)="scrollGifts('right')">
+      &#10095;
+    </button>
   </div>
 </section>
 <!--  artprohor family section-->
@@ -181,7 +200,7 @@
 </section>
 
 <!-- Upcoming Festival -->
- <section class="upcoming-festival">
+<!-- <section class="upcoming-festival">
   <h2>Upcoming Festival: Durga Puja 2025</h2>
   <p class="festival-tagline">শারদীয় উৎসবের সাজ, ARtপ্রহরের হাতের ছোঁয়ায়</p>
 
@@ -193,7 +212,31 @@
       <button class="shop-now">Shop Now</button>
     </div>
   </div>
+</section> -->
+
+<section class="handmade-gifts">
+  <h2>Handmade Gift Items</h2>
+
+  <div class="center-carousel">
+    <div
+      *ngFor="let gift of gifts; let i = index"
+      class="slide"
+      [ngClass]="{
+        active: i === activeIndex,
+        left: i === getLeftIndex(),
+        right: i === getRightIndex(),
+        'far-left': i === getFarLeftIndex(),
+        'far-right': i === getFarRightIndex()
+      }"
+      (click)="goToIndex(i)"
+    >
+      <img src="assets/img4.jpg" [alt]="gift" />
+      <p>{{ gift }}</p>
+    </div>
+  </div>
+
+  <div class="carousel-controls">
+    <button (click)="prev()">‹</button>
+    <button (click)="next()">›</button>
+  </div>
 </section>
-
-
-
