@@ -173,18 +173,18 @@ getFarRightIndex() {
   }
 
   customers = [
-    { name: 'Customer 1' },
-    { name: 'Customer 2' },
-    { name: 'Customer 3' },
-    { name: 'Customer 4' },
-    { name: 'Customer 5' },
-    { name: 'Customer 6' },
-    { name: 'Customer 7' },
-    { name: 'Customer 8' },
-    { name: 'Customer 9' },
-    { name: 'Customer 10' },
-    { name: 'Customer 11' },
-    { name: 'Customer 12' },
+    { name: 'Customer 1', Image:'assets/review/clay1.jpeg'},
+    { name: 'Customer 2', Image:'assets/review/clay5.jpeg'},
+    { name: 'Customer 3', Image:'assets/review/clay4.jpeg'},
+    { name: 'Customer 4', Image:'assets/review/clay3.jpeg'},
+    { name: 'Customer 5', Image:'assets/review/clay7.jpeg'},
+    { name: 'Customer 6', Image:'assets/review/clay8.jpeg'},
+    { name: 'Customer 7', Image:'assets/review/clay2.jpeg'},
+    { name: 'Customer 8', Image:'assets/review/clay9.jpeg'},
+    { name: 'Customer 9', Image:'assets/review/fevric1.jpg'},
+    { name: 'Customer 10', Image:'assets/review/clay10.jpeg'},
+    { name: 'Customer 11' , Image:'assets/review/clay6.jpeg'},
+    { name: 'Customer 12' , Image:'assets/review/oxi1.jpeg'},
   ];
 
   scrollFamily(direction: 'left' | 'right') {

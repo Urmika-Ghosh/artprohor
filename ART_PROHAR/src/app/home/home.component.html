@@ -189,7 +189,7 @@
   <div class="carousel-wrapper">
     <div class="family-carousel" #familyCarousel>
       <div class="family-item" *ngFor="let customer of customers">
-        <img src="assets/img4.jpg" [alt]="customer.name" />
+        <img [src]="customer.Image" [alt]="customer.name" />
         <p>{{ customer.name }}</p>
       </div>
     </div>

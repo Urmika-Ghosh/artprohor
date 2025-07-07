@@ -73,7 +73,7 @@
 }
 
 /* Icons section */
-.icons {
+/* .icons {
   display: flex;
   gap: 20px;
   align-items: center;
@@ -88,7 +88,31 @@
 
 .icons i:hover {
   transform: scale(1.1);
+} */
+
+/* Icons container */
+.icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
+
+/* Icon elements: BOTH <i> and <a> */
+.icons i,
+.icons a {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  text-decoration: none; /* removes underline for <a> */
+}
+
+/* Hover effect for BOTH */
+.icons i:hover,
+.icons a:hover {
+  transform: scale(1.1);
+}
+
 
 
 .dropdown1{
