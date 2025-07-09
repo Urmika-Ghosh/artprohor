@@ -33,8 +33,18 @@ export class HomeComponent implements AfterViewInit, OnDestroy,OnInit {
     'Gift Category 10',
   ];
 
+
+  gifts1 = [
+    { name: 'Durga Idol', image: 'assets/img1.jpg' },
+    { name: 'Durga Idol', image: 'assets/img2.jpg' },
+    { name: 'Durga Idol', image: 'assets/img3.jpg' },
+  { name: 'Durga Idol', image: 'assets/img4.jpg' },
+  { name: 'Traditional Jewelry', image: 'assets/img5.jpg' },
+  { name: 'Festive Decoration', image: 'assets/img6.jpg' }
+]
+
   activeIndex = 2;
-  
+  activeIndex1 = 0;
 
   ngOnInit() {
     // Auto-scroll
@@ -46,11 +56,11 @@ export class HomeComponent implements AfterViewInit, OnDestroy,OnInit {
   }
 
   next() {
-  this.activeIndex = (this.activeIndex + 1) % this.gifts.length;
+  this.activeIndex = (this.activeIndex + 1) % this.gifts1.length;
 }
 
 prev() {
-  this.activeIndex = (this.activeIndex - 1 + this.gifts.length) % this.gifts.length;
+  this.activeIndex = (this.activeIndex - 1 + this.gifts1.length) % this.gifts1.length;
 }
 
 goToIndex(index: number) {
@@ -58,19 +68,19 @@ goToIndex(index: number) {
 }
 
 getLeftIndex() {
-  return (this.activeIndex - 1 + this.gifts.length) % this.gifts.length;
+  return (this.activeIndex - 1 + this.gifts1.length) % this.gifts1.length;
 }
 
 getRightIndex() {
-  return (this.activeIndex + 1) % this.gifts.length;
+  return (this.activeIndex + 1) % this.gifts1.length;
 }
 
 getFarLeftIndex() {
-  return (this.activeIndex - 2 + this.gifts.length) % this.gifts.length;
+  return (this.activeIndex - 2 + this.gifts1.length) % this.gifts1.length;
 }
 
 getFarRightIndex() {
-  return (this.activeIndex + 2) % this.gifts.length;
+  return (this.activeIndex + 2) % this.gifts1.length;
 }
 
 

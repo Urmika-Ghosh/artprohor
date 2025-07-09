@@ -214,24 +214,23 @@
   </div>
 </section> -->
 
-<section class="handmade-gifts">
-  <h2>Handmade Gift Items</h2>
+<section class="festival-carousel-section">
+  <h2>Upcoming Festival: Durga Puja 2025</h2>
 
   <div class="center-carousel">
     <div
-      *ngFor="let gift of gifts; let i = index"
+      *ngFor="let gift of gifts1; let i = index"
       class="slide"
       [ngClass]="{
         active: i === activeIndex,
         left: i === getLeftIndex(),
         right: i === getRightIndex(),
-        'far-left': i === getFarLeftIndex(),
-        'far-right': i === getFarRightIndex()
+        hidden: i !== activeIndex && i !== getLeftIndex() && i !== getRightIndex()
       }"
       (click)="goToIndex(i)"
     >
-      <img src="assets/img4.jpg" [alt]="gift" />
-      <p>{{ gift }}</p>
+      <img [src]="gift.image" [alt]="gift.name" />
+      <p>{{ gift.name }}</p>
     </div>
   </div>
 
@@ -240,3 +239,5 @@
     <button (click)="next()">›</button>
   </div>
 </section>
+
+
