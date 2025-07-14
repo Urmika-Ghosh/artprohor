@@ -1,0 +1,571 @@
+/* .carousel-item img {
+  height: 600px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+
+.carousel-item {
+  display: block !important;
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 10px;
+} */
+
+/* ===== Carousel ===== */
+
+ html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden; /* Force hide vertical scroll if tiny overflow remains */
+}
+
+#homeCarousel {
+  width: 100%;
+  height: calc(100vh - 80px); /* Subtract navbar height */
+}
+
+.carousel-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item {
+  height: 100%;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+/* ===== Shop by Categories Section ===== */
+.best-selling {
+  padding: 60px 40px;
+  text-align: center;
+  background: #fff;
+}
+
+.best-selling h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #b71c1c; /* nice accent color */
+}
+
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.product-card {
+  width: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-card p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.latest-drops {
+  padding: 60px 40px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.latest-drops h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #b71c1c; /* your theme red */
+}
+
+.tabs {
+  margin-bottom: 40px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  margin: 0 15px;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab.active,
+.tab:hover {
+  border-bottom: 2px solid #b71c1c;
+  color: #b71c1c;
+}
+
+.latest-drops .products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.latest-drops .product-card {
+  width: 200px;
+  text-align: center;
+}
+
+.latest-drops .product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.handmade-gifts {
+  padding: 60px 40px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.handmade-gifts h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #b71c1c;
+}
+
+.handmade-carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.handmade-items {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  gap: 30px;
+  padding: 10px;
+}
+
+.handmade-items::-webkit-scrollbar {
+  display: none;
+}
+
+.handmade-item {
+  flex: 0 0 auto;
+  width: 180px; /* ~6 items */
+  text-align: center;
+}
+
+.handmade-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.handmade-item p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.gift-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+}
+
+.gift-nav.left {
+  left: 5px;
+}
+
+.gift-nav.right {
+  right: 5px;
+}
+/* artprohor family section */
+.artprohor-family {
+  padding: 60px 40px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.artprohor-family h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #b71c1c;
+}
+
+.family-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 30px;
+}
+
+.family-item {
+  flex: 0 0 auto;
+  width: 300px; /* Bigger block */
+  text-align: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.family-item img {
+  width: 100%;
+  height: 400px;  /* Taller like big blocks */
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.family-item p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  z-index: 2;
+}
+
+.carousel-btn.left {
+  left: 10px;
+}
+
+.carousel-btn.right {
+  right: 10px;
+}
+.carousel-wrapper {
+  position: relative;  /* ⬅️ This is KEY */
+}
+
+.family-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 30px;
+  padding: 20px 0;  /* Space for buttons */
+}
+/* Upcoming Festival */
+.upcoming-festival {
+  padding: 60px 40px;
+  text-align: center;
+  background: #fff8f0;
+}
+
+.upcoming-festival h2 {
+  font-size: 2rem;
+  color: #b71c1c;
+  margin-bottom: 10px;
+}
+
+.festival-tagline {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 40px;
+  font-family: 'Noto Serif Bengali', serif; /* Or any Bengali font if available */
+}
+
+.festival-feature {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.festival-feature img {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.festival-info {
+  max-width: 400px;
+  text-align: left;
+}
+
+.festival-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #b71c1c;
+}
+
+.festival-info p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.shop-now {
+  background: #b71c1c;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.shop-now:hover {
+  background: #8a1313;
+}
+
+/* ===== 3D Center Carousel ===== */
+
+/* .festival-carousel-section {
+  padding: 60px 40px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.festival-carousel-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #b71c1c;
+}
+
+.festival-carousel-section .center-carousel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.festival-carousel-section .slide {
+  position: absolute;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.festival-carousel-section .slide img {
+  width: 220px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.festival-carousel-section .slide.active {
+  transform: translateX(0) scale(1);
+  z-index: 3;
+  opacity: 1;
+}
+
+.festival-carousel-section .slide.left {
+  transform: translateX(-120px) scale(0.8) rotateY(30deg);
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.festival-carousel-section .slide.right {
+  transform: translateX(120px) scale(0.8) rotateY(-30deg);
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.festival-carousel-section .slide.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.festival-carousel-section .carousel-controls {
+  margin-top: 20px;
+}
+
+.festival-carousel-section .carousel-controls button {
+  background: #b71c1c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.festival-carousel-section .carousel-controls button:hover {
+  background: #8a1313;
+} */
+
+.festival-carousel-section {
+  padding: 60px 40px;
+  background: #f9f9f9;
+}
+
+.festival-carousel-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #b71c1c;
+  text-align: center;
+}
+
+.festival-carousel-wrapper {
+  display: flex;
+  align-items: stretch; /* ✅ Make both blocks same height */
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap; /* responsive */
+}
+
+/* LEFT: Carousel block */
+.festival-carousel-section .center-carousel {
+  position: relative;
+  flex: 1 1 500px; /* grow, shrink, base width */
+  min-width: 300px;
+  height: 500px; /* ✅ Make taller like family image */
+  perspective: 1000px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: #fff; */
+  border-radius: 10px;
+}
+
+/* Slide styles same */
+.festival-carousel-section .slide {
+  position: absolute;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.festival-carousel-section .slide img {
+  width: 300px; /* bigger */
+  height: 450px; /* bigger */
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.festival-carousel-section .slide.active {
+  transform: translateX(0) scale(1);
+  z-index: 3;
+  opacity: 1;
+}
+
+.festival-carousel-section .slide.left {
+  transform: translateX(-160px) scale(0.8) rotateY(30deg);
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.festival-carousel-section .slide.right {
+  transform: translateX(160px) scale(0.8) rotateY(-30deg);
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.festival-carousel-section .slide.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.festival-carousel-section .carousel-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.festival-carousel-section .carousel-controls button {
+  background: #b71c1c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.festival-carousel-section .carousel-controls button:hover {
+  background: #8a1313;
+}
+
+/* RIGHT: Gift details block */
+.festival-carousel-section .gift-details {
+  flex: 1 1 400px; /* grow, shrink, base width */
+  min-width: 300px;
+  height: 500px; /* ✅ Same height as carousel */
+  /* background: #fff; */
+  border-radius: 10px;
+  padding: 30px;
+  /* box-shadow: 0 5px 15px rgba(0,0,0,0.1); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center */
+}
+
+.festival-carousel-section .gift-details h3 {
+  margin-bottom: 15px;
+  color: #b71c1c;
+}
+
+.festival-carousel-section .gift-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.festival-carousel-section .gift-details li {
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+
+
+
+
+
