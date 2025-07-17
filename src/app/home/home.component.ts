@@ -33,6 +33,12 @@ export class HomeComponent implements AfterViewInit, OnDestroy,OnInit {
     'Gift Category 10',
   ];
 
+  exhibitions = [
+  { image: 'assets/Exhibition/ex1.jpg', title: 'Exhibition 1' },
+  { image: 'assets/Exhibition/ex2.jpg', title: 'Exhibition 2' },
+  { image: 'assets/Exhibition/ex3.jpg', title: 'Exhibition 3' },
+  { image: 'assets/Exhibition/ex4.jpg', title: 'Exhibition 4' },
+];
 
   gifts1 = [
     {
