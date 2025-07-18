@@ -360,7 +360,7 @@
 
 /* ===== 3D Center Carousel ===== */
 
-.festival-carousel-section {
+/* .festival-carousel-section {
   padding: 60px 40px;
   text-align: center;
   background: #f9f9f9;
@@ -436,9 +436,191 @@
 
 .festival-carousel-section .carousel-controls button:hover {
   background: #8a1313;
+} */
+
+.festival-carousel-section {
+  padding: 60px 40px;
+  background: #f9f9f9;
 }
 
+.festival-carousel-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #b71c1c;
+  text-align: center;
+}
 
+.festival-carousel-wrapper {
+  display: flex;
+  align-items: stretch; /* ✅ Make both blocks same height */
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap; /* responsive */
+}
 
+/* LEFT: Carousel block */
+.festival-carousel-section .center-carousel {
+  position: relative;
+  flex: 1 1 500px; /* grow, shrink, base width */
+  min-width: 300px;
+  height: 500px; /* ✅ Make taller like family image */
+  perspective: 1000px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: #fff; */
+  border-radius: 10px;
+}
 
+/* Slide styles same */
+.festival-carousel-section .slide {
+  position: absolute;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
 
+.festival-carousel-section .slide img {
+  width: 300px; /* bigger */
+  height: 450px; /* bigger */
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.festival-carousel-section .slide.active {
+  transform: translateX(0) scale(1);
+  z-index: 3;
+  opacity: 1;
+}
+
+.festival-carousel-section .slide.left {
+  transform: translateX(-160px) scale(0.8) rotateY(30deg);
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.festival-carousel-section .slide.right {
+  transform: translateX(160px) scale(0.8) rotateY(-30deg);
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.festival-carousel-section .slide.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.festival-carousel-section .carousel-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.festival-carousel-section .carousel-controls button {
+  background: #b71c1c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.festival-carousel-section .carousel-controls button:hover {
+  background: #8a1313;
+}
+
+/* RIGHT: Gift details block */
+.festival-carousel-section .gift-details {
+  flex: 1 1 400px; /* grow, shrink, base width */
+  min-width: 300px;
+  height: 500px; /* ✅ Same height as carousel */
+  /* background: #fff; */
+  border-radius: 10px;
+  padding: 30px;
+  /* box-shadow: 0 5px 15px rgba(0,0,0,0.1); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center */
+}
+
+.festival-carousel-section .gift-details h3 {
+  margin-bottom: 15px;
+  color: #b71c1c;
+}
+
+.festival-carousel-section .gift-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.festival-carousel-section .gift-details li {
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+/* ====== Exhibition Section ====== */
+
+.exhibition-section {
+  padding: 60px 40px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.exhibition-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.exhibition-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 40px;
+  justify-items: center;
+}
+
+.exhibition-item {
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  animation: fadeUp 1s ease forwards;
+  opacity: 0;
+}
+
+.exhibition-item:nth-child(1) { animation-delay: 0s; }
+.exhibition-item:nth-child(2) { animation-delay: 0.2s; }
+.exhibition-item:nth-child(3) { animation-delay: 0.4s; }
+.exhibition-item:nth-child(4) { animation-delay: 0.6s; }
+
+.exhibition-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+}
+
+@keyframes fadeUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .exhibition-grid {
+    grid-template-columns: 1fr;
+  }
+}

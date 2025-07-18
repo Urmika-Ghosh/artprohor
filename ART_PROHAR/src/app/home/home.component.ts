@@ -33,14 +33,74 @@ export class HomeComponent implements AfterViewInit, OnDestroy,OnInit {
     'Gift Category 10',
   ];
 
+  exhibitions = [
+  { image: 'assets/Exhibition/ex1.jpg', title: 'Exhibition 1' },
+  { image: 'assets/Exhibition/ex2.jpg', title: 'Exhibition 2' },
+  { image: 'assets/Exhibition/ex3.jpg', title: 'Exhibition 3' },
+  { image: 'assets/Exhibition/ex4.jpg', title: 'Exhibition 4' },
+];
 
   gifts1 = [
-    { name: 'Durga Idol', image: 'assets/img1.jpg' },
-    { name: 'Durga Idol', image: 'assets/img2.jpg' },
-    { name: 'Durga Idol', image: 'assets/img3.jpg' },
-  { name: 'Durga Idol', image: 'assets/img4.jpg' },
-  { name: 'Traditional Jewelry', image: 'assets/img5.jpg' },
-  { name: 'Festive Decoration', image: 'assets/img6.jpg' }
+    {
+    name: 'Oxidized  silver toned rose designed necklace with earing',
+    image: 'assets/img1.jpg',
+    info: {
+      material: 'oxidize',
+      size: '15 inch chain',
+      earing:'rose earing',
+      Price : '250/- only'
+    }
+  },
+    {
+    name: 'Red and white combined kori chocker with earing',
+    image: 'assets/img2.jpg',
+    info: {
+      material: 'fabric',
+      Type : 'chocker',
+      earing:'red fabric base with kori earing',
+      Price : '300/- only'
+    }
+  },
+    {
+    name: 'Oxidized  silver toned rose designed necklace with earing',
+    image: 'assets/img3.jpg',
+    info: {
+      material: 'oxidize',
+      size: '15 inch chain',
+      earing:'rose earing',
+      Price : '250/- only'
+    }
+  },
+  {
+    name: 'Red and white combined kori chocker with earing',
+    image: 'assets/img4.jpg',
+    info: {
+      material: 'fabric',
+      Type : 'chocker',
+      earing:'red fabric base with kori earing',
+      Price : '300/- only'
+    }
+  },
+  {
+    name: 'Oxidized  silver toned rose designed necklace with earing',
+    image: 'assets/img5.jpg',
+    info: {
+      material: 'oxidize',
+      size: '15 inch chain',
+      earing:'rose earing',
+      Price : '250/- only'
+    }
+  },
+    {
+    name: 'Red and white combined kori chocker with earing',
+    image: 'assets/img6.jpg',
+    info: {
+      material: 'fabric',
+      Type : 'chocker',
+      earing:'red fabric base with kori earing',
+      Price : '300/- only'
+    }
+  },
 ]
 
   activeIndex = 2;

@@ -46,7 +46,7 @@
 <!-- Shop By Categories -->
 
 <section class="best-selling">
-  <h2>Shop by Categories</h2>
+  <h2>Shop by Categories of products</h2>
   <div class="products-grid">
     <div class="product-card">
       <img src="assets/img1.jpg" alt="Product 1" />
@@ -213,8 +213,8 @@
     </div>
   </div>
 </section> -->
-
-<section class="festival-carousel-section">
+<!-- Upcoming Festival -->
+<!-- <section class="festival-carousel-section">
   <h2>Upcoming Festival: Durga Puja 2025</h2>
 
   <div class="center-carousel">
@@ -238,6 +238,67 @@
     <button (click)="prev()">‹</button>
     <button (click)="next()">›</button>
   </div>
+</section> -->
+
+<!-- Upcoming Festival -->
+<section class="festival-carousel-section">
+  <h2>Upcoming Festival: Durga Puja 2025</h2>
+
+  <div class="festival-carousel-wrapper">
+    <!-- LEFT: Carousel -->
+    <div class="center-carousel">
+      <div
+        *ngFor="let gift of gifts1; let i = index"
+        class="slide"
+        [ngClass]="{
+          active: i === activeIndex,
+          left: i === getLeftIndex(),
+          right: i === getRightIndex(),
+          hidden: i !== activeIndex && i !== getLeftIndex() && i !== getRightIndex()
+        }"
+        (click)="goToIndex(i)"
+      >
+        <img [src]="gift.image" [alt]="gift.name" />
+      </div>
+
+      <!-- <div class="carousel-controls">
+        <button (click)="prev()">‹</button>
+        <button (click)="next()">›</button>
+      </div> -->
+    </div>
+
+    <!-- RIGHT: Details -->
+    <div class="gift-details">
+      <h3>{{ gifts1[activeIndex].name }}</h3>
+      <ul>
+        <li>Material: {{ gifts1[activeIndex].info.material }}</li>
+        <li *ngIf="gifts1[activeIndex].info.size">Size: {{ gifts1[activeIndex].info.size }}</li>
+        <li *ngIf="gifts1[activeIndex].info.Type">Type: {{ gifts1[activeIndex].info.Type }}</li>
+        <li>Earing: {{ gifts1[activeIndex].info.earing }}</li>
+        <li>Price: {{ gifts1[activeIndex].info.Price }}</li>
+      </ul>
+    </div>
+  </div>
 </section>
+<!-- Artprohor Exhibition Section -->
+<!-- <section class="exhibition-section">
+  <h2>ARtপ্রহর Exhibitions ✨</h2>
+  <div class="exhibition-grid">
+    <div class="exhibition-item" *ngFor="let exhibition of exhibitions">
+      <img [src]="exhibition.image" [alt]="exhibition.title" />
+    </div>
+  </div>
+</section> -->
+<section class="exhibition-section">
+  <h2>ARtপ্রহর Exhibitions 🪁</h2>
+  <div class="exhibition-grid">
+    <div class="exhibition-item" *ngFor="let exhibition of exhibitions">
+      <img [src]="exhibition.image" [alt]="exhibition.title" />
+    </div>
+  </div>
+</section>
+
+
+
 
 
